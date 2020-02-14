@@ -44,7 +44,10 @@ function Customers(props) {
                 <TableCell align="left">{row.email}</TableCell>
                 <TableCell align="left">{row.mobile}</TableCell>
                 <TableCell align="left">
-                  <Link to={`/users/customers/show/${row._id}`}>
+                  <Link
+                    to={`/users/customers/show/${row._id}`}
+                    style={{ textDecoration: "none" }}
+                  >
                     <Button variant="contained" color="primary">
                       Show
                     </Button>
@@ -65,7 +68,7 @@ function Customers(props) {
         }
       </Table>
       <br />
-      <Link to="/users/customers/new">
+      <Link to="/users/customers/new" style={{ textDecoration: "none" }}>
         <Button variant="contained" color="primary">
           Add Customer
         </Button>

@@ -47,17 +47,17 @@ function App(props) {
               </Typography>
               {Object.keys(props.users).length === 0 ? (
                 <>
-                  <Link to="/">
+                  <Link to="/" style={{ textDecoration: "none" }}>
                     <Button color="default">
                       <span>Home</span>
                     </Button>
                   </Link>
-                  <Link to="/users/login">
+                  <Link to="/users/login" style={{ textDecoration: "none" }}>
                     <Button color="default">
                       <span>Login</span>
                     </Button>
                   </Link>
-                  <Link to="/users/register">
+                  <Link to="/users/register" style={{ textDecoration: "none" }}>
                     <Button color="default">
                       <span>Register</span>
                     </Button>
@@ -65,32 +65,41 @@ function App(props) {
                 </>
               ) : (
                 <>
-                  <Link to="/">
+                  <Link to="/" style={{ textDecoration: "none" }}>
                     <Button color="default">
                       <span>Home</span>
                     </Button>
                   </Link>
-                  <Link to="/users/customers">
+                  <Link
+                    to="/users/customers"
+                    style={{ textDecoration: "none" }}
+                  >
                     <Button color="default">
                       <span>Customers</span>
                     </Button>
                   </Link>
-                  <Link to="/users/departments">
+                  <Link
+                    to="/users/departments"
+                    style={{ textDecoration: "none" }}
+                  >
                     <Button color="default">
                       <span>Departments</span>
                     </Button>
                   </Link>
-                  <Link to="/users/employees">
+                  <Link
+                    to="/users/employees"
+                    style={{ textDecoration: "none" }}
+                  >
                     <Button color="default">
                       <span>Employees</span>
                     </Button>
                   </Link>
-                  <Link to="/users/tickets">
+                  <Link to="/users/tickets" style={{ textDecoration: "none" }}>
                     <Button color="default">
                       <span>Tickets</span>
                     </Button>
                   </Link>
-                  <Link to="/">
+                  <Link to="/" style={{ textDecoration: "none" }}>
                     <Button color="default" onClick={handleDelete}>
                       <span>Logout</span>
                     </Button>

@@ -17,7 +17,12 @@ function CustomerShow(props) {
     <div align="center">
       <div>
         <h1>{props.customers !== undefined && props.customers.email}</h1>
-        <Link to={`/users/customers/edit/${props.match.params.id}`}>Edit</Link>
+        <Link
+          to={`/users/customers/edit/${props.match.params.id}`}
+          style={{ textDecoration: "none" }}
+        >
+          Edit
+        </Link>
         <Paper square>
           <Tabs
             onChange={handleChange}

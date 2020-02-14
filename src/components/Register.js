@@ -1,9 +1,15 @@
 import React, { Component } from "react";
 import { startRegisterUser } from "../actions/userActions";
 import { connect } from "react-redux";
-import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
+import FormControl from "@material-ui/core/FormControl";
+import InputLabel from "@material-ui/core/InputLabel";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import FilledInput from "@material-ui/core/FilledInput";
 
 class Register extends Component {
   constructor() {
@@ -17,12 +23,16 @@ class Register extends Component {
     };
   }
 
-  handlePasswordShow = (e) => {
-    this.setState({ showpassword: e.target.checked });
-  };
-
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
+  };
+
+  handleClickShowPassword = (e) => {
+    this.setState({ showpassword: !this.state.showpassword });
+  };
+
+  handleMouseDownPassword = (event) => {
+    event.preventDefault();
   };
 
   handleSubmit = (e) => {
@@ -46,53 +56,95 @@ class Register extends Component {
   render() {
     return (
       <div align="center">
+        <br />
+        <br />
         <Typography variant="h4">Register</Typography>
         <br />
         <br />
         <form>
-          <TextField
-            label="Name"
-            type="text"
-            name="username"
-            variant="filled"
-            onChange={this.handleChange}
-          ></TextField>
+          <FormControl variant="filled">
+            <InputLabel htmlFor="component-name-outlined">Username</InputLabel>
+            <FilledInput
+              style={{ width: 250 }}
+              id="component-name-outlined"
+              type="text"
+              name="username"
+              value={this.state.username}
+              onChange={this.handleChange}
+            ></FilledInput>
+          </FormControl>
           <br />
           <br />
-          <TextField
-            label="Email"
-            type="text"
-            variant="filled"
-            name="email"
-            onChange={this.handleChange}
-          ></TextField>
+          <FormControl variant="filled">
+            <InputLabel htmlFor="component-email-outlined">Email</InputLabel>
+            <FilledInput
+              style={{ width: 250 }}
+              id="component-email-outlined"
+              type="text"
+              name="email"
+              value={this.state.email}
+              onChange={this.handleChange}
+            ></FilledInput>
+          </FormControl>
           <br />
           <br />
-          <TextField
-            label="Password"
-            type={this.state.showpassword ? "text" : "password"}
-            variant="filled"
-            name="password"
-            onChange={this.handleChange}
-          ></TextField>
+          <FormControl variant="filled">
+            <InputLabel htmlFor="component-email-outlined">Password</InputLabel>
+            <FilledInput
+              id="component-email-outlined"
+              style={{ width: 250 }}
+              type={this.state.showpassword ? "text" : "password"}
+              name="password"
+              value={this.state.password}
+              onChange={this.handleChange}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={this.handleClickShowPassword}
+                    onMouseDown={this.handleMouseDownPassword}
+                  >
+                    {this.state.showpassword ? (
+                      <Visibility />
+                    ) : (
+                      <VisibilityOff />
+                    )}
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
+          </FormControl>
           <br />
           <br />
-          <TextField
-            label="Confirm Password"
-            type={this.state.showpassword ? "text" : "password"}
-            variant="filled"
-            name="confirmPassword"
-            onChange={this.handleChange}
-          ></TextField>
-          <br />
-          <br />
-          Show Password
-          <TextField
-            type="checkbox"
-            checked={this.state.showpassword}
-            variant="filled"
-            onChange={this.handlePasswordShow}
-          ></TextField>
+
+          <FormControl variant="filled">
+            <InputLabel htmlFor="component-email-outlined">
+              Confirm Password
+            </InputLabel>
+            <FilledInput
+              id="component-email-outlined"
+              style={{ width: 250 }}
+              type={this.state.showpassword ? "text" : "password"}
+              name="confirmPassword"
+              value={this.state.confirmPassword}
+              onChange={this.handleChange}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={this.handleClickShowPassword}
+                    onMouseDown={this.handleMouseDownPassword}
+                  >
+                    {this.state.showpassword ? (
+                      <Visibility />
+                    ) : (
+                      <VisibilityOff />
+                    )}
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
+          </FormControl>
           <br />
           <br />
           <Button onClick={this.handleSubmit} variant="contained">

@@ -15,7 +15,6 @@ store.subscribe(() => {
 console.log(localStorage.getItem("authToken"), "Token");
 if (localStorage.getItem("authToken")) {
   store.dispatch(startSetUser());
-  store.dispatch(startGetCustomer());
 }
 
 const jsx = (
