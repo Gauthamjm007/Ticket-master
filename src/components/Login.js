@@ -49,10 +49,8 @@ class Login extends Component {
             variant="filled"
             onChange={this.handleChange}
           ></TextField>
-
           <br />
           <br />
-
           <TextField
             type="password"
             label="Password"
