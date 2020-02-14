@@ -64,3 +64,18 @@ export const startAddCustomer = (formData, redirect) => {
 export const addCustomer = (customer) => {
   return { type: "ADD_CUSTOMER", payload: customer };
 };
+
+export const startCustomerEdit = (formData, id, redirect) => {
+  return (dispatch) => {
+    axios
+      .put(`/customers/${id}`, formData, {
+        headers: {
+          "x-auth": localStorage.getItem("authToken")
+        }
+      })
+      .then((response) => {
+        console.log(response.data);
+        redirect();
+      });
+  };
+};

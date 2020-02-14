@@ -1,5 +1,26 @@
 import axios from "../config/axios";
 
+export const startLogout = () => {
+  return (dispatch) => {
+    axios
+      .delete("/users/logout", {
+        headers: {
+          "x-auth": localStorage.getItem("authToken")
+        }
+      })
+      .then((response) => {
+        if (response.data.notice) {
+          localStorage.removeItem("authToken");
+          dispatch(removeUser());
+          window.location.href = "/users/login";
+        }
+      });
+  };
+};
+
+export const removeUser = () => {
+  return { type: "REMOVE_USER" };
+};
 export const startRegisterUser = (formData, redirect) => {
   return (dispatch) => {
     axios.post("/users/register", formData).then((response) => {

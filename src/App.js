@@ -11,10 +11,12 @@ import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
 import Customers from "./components/Customer/Customers";
 import CustomerNew from "./components/Customer/CustomerNew";
+import CustomersEdit from "./components/Customer/CustomersEdit";
 import Departments from "./components/Departments";
 import Employees from "./components/Employees";
 import Tickets from "./components/Tickets";
 import CustomerShow from "./components/Customer/CustomerShow";
+import { startLogout } from "./actions/userActions";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,8 +34,7 @@ function App(props) {
   const classes = useStyles();
 
   const handleDelete = (e) => {
-    localStorage.removeItem("authToken");
-    window.location.reload(false);
+    props.dispatch(startLogout());
   };
   return (
     <>
@@ -109,6 +110,7 @@ function App(props) {
           />
 
           <Route path="/users/customers/show/:id" component={CustomerShow} />
+          <Route path="/users/customers/edit/:id" component={CustomersEdit} />
           <Route
             path="/users/departments"
             component={Departments}

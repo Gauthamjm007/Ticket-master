@@ -6,13 +6,18 @@ import TableCell from "@material-ui/core/TableCell";
 import Button from "@material-ui/core/Button";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import { startRemoveCustomer } from "../../actions/customersActions";
+import {
+  startRemoveCustomer,
+  startGetCustomer
+} from "../../actions/customersActions";
 import { Link } from "react-router-dom";
 
 function Customers(props) {
   const handleRemoveCustomer = (id) => {
     props.dispatch(startRemoveCustomer(id)) && window.location.reload(false);
   };
+
+  props.dispatch(startGetCustomer());
 
   return (
     <div>
