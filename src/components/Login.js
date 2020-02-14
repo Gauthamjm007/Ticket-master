@@ -10,12 +10,17 @@ class Login extends Component {
     super();
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      showpassword: false
     };
   }
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
+  };
+
+  handlePasswordShow = (e) => {
+    this.setState({ showpassword: e.target.checked });
   };
 
   hanldeSubmit = (e) => {
@@ -52,11 +57,20 @@ class Login extends Component {
           <br />
           <br />
           <TextField
-            type="password"
+            type={this.state.showpassword ? "text" : "password"}
             label="Password"
             name="password"
             variant="filled"
             onChange={this.handleChange}
+          ></TextField>
+          <br />
+          <br />
+          Show Password :
+          <TextField
+            type="checkbox"
+            checked={this.state.showpassword}
+            variant="filled"
+            onChange={this.handlePasswordShow}
           ></TextField>
           <br />
           <br />

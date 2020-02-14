@@ -10,6 +10,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
 import Customers from "./components/Customers";
+import CustomerNew from "./components/CustomerNew";
 import Departments from "./components/Departments";
 import Employees from "./components/Employees";
 import Tickets from "./components/Tickets";
@@ -35,7 +36,7 @@ function App(props) {
   };
   return (
     <>
-      <div align="sticky" >
+      <div align="sticky">
         <BrowserRouter>
           <AppBar position="static" color="inherit">
             <Toolbar>
@@ -100,6 +101,7 @@ function App(props) {
           <Route path="/users/login" component={Login} exact={true} />
           <Route path="/users/register" component={Register} exact={true} />
           <Route path="/users/customers" component={Customers} exact={true} />
+          <Route path="/users/customers/new" component={CustomerNew} exact={true} />
           <Route
             path="/users/departments"
             component={Departments}

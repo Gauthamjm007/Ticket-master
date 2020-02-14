@@ -8,6 +8,7 @@ function Home() {
       <img
         src="https://www.rhportal.com.br/wp-content/uploads/perguntas-sobre-lideran%C3%A7a.jpg"
         width={1000}
+        alt="loading"
       ></img>
     </div>
   );

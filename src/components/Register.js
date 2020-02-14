@@ -12,9 +12,14 @@ class Register extends Component {
       username: "",
       email: "",
       password: "",
-      confirmPassword: ""
+      confirmPassword: "",
+      showpassword: false
     };
   }
+
+  handlePasswordShow = (e) => {
+    this.setState({ showpassword: e.target.checked });
+  };
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
@@ -54,7 +59,6 @@ class Register extends Component {
           ></TextField>
           <br />
           <br />
-
           <TextField
             label="Email"
             type="text"
@@ -64,23 +68,30 @@ class Register extends Component {
           ></TextField>
           <br />
           <br />
-
           <TextField
             label="Password"
-            type="password"
+            type={this.state.showpassword ? "text" : "password"}
             variant="filled"
             name="password"
             onChange={this.handleChange}
           ></TextField>
           <br />
           <br />
-
           <TextField
             label="Confirm Password"
-            type="password"
+            type={this.state.showpassword ? "text" : "password"}
             variant="filled"
             name="confirmPassword"
             onChange={this.handleChange}
+          ></TextField>
+          <br />
+          <br />
+          Show Password
+          <TextField
+            type="checkbox"
+            checked={this.state.showpassword}
+            variant="filled"
+            onChange={this.handlePasswordShow}
           ></TextField>
           <br />
           <br />
