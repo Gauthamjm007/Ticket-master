@@ -9,11 +9,12 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
-import Customers from "./components/Customers";
-import CustomerNew from "./components/CustomerNew";
+import Customers from "./components/Customer/Customers";
+import CustomerNew from "./components/Customer/CustomerNew";
 import Departments from "./components/Departments";
 import Employees from "./components/Employees";
 import Tickets from "./components/Tickets";
+import CustomerShow from "./components/Customer/CustomerShow";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -101,7 +102,13 @@ function App(props) {
           <Route path="/users/login" component={Login} exact={true} />
           <Route path="/users/register" component={Register} exact={true} />
           <Route path="/users/customers" component={Customers} exact={true} />
-          <Route path="/users/customers/new" component={CustomerNew} exact={true} />
+          <Route
+            path="/users/customers/new"
+            component={CustomerNew}
+            exact={true}
+          />
+
+          <Route path="/users/customers/show/:id" component={CustomerShow} />
           <Route
             path="/users/departments"
             component={Departments}

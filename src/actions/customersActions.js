@@ -30,7 +30,37 @@ export const startRemoveCustomer = (id) => {
       })
       .then((response) => {
         const user = response.data;
+        dispatch(removeCustomer(id));
         console.log(user);
       });
   };
+};
+
+export const removeCustomer = (id) => {
+  return { type: "REMOVE_CUSTOMER", payload: id };
+};
+
+export const startAddCustomer = (formData, redirect) => {
+  return (dispatch) => {
+    axios
+      .post("/customers", formData, {
+        headers: {
+          "x-auth": localStorage.getItem("authToken")
+        }
+      })
+      .then((response) => {
+        const customer = response.data;
+
+        if (customer.hasOwnProperty("errors")) {
+          alert(customer._message);
+        } else {
+          dispatch(addCustomer(customer));
+          redirect();
+        }
+      });
+  };
+};
+
+export const addCustomer = (customer) => {
+  return { type: "ADD_CUSTOMER", payload: customer };
 };

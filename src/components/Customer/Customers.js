@@ -6,7 +6,7 @@ import TableCell from "@material-ui/core/TableCell";
 import Button from "@material-ui/core/Button";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import { startRemoveCustomer } from "../actions/customersActions";
+import { startRemoveCustomer } from "../../actions/customersActions";
 import { Link } from "react-router-dom";
 
 function Customers(props) {
@@ -39,9 +39,11 @@ function Customers(props) {
                 <TableCell align="left">{row.email}</TableCell>
                 <TableCell align="left">{row.mobile}</TableCell>
                 <TableCell align="left">
-                  <Button variant="contained" color="primary">
-                    Show
-                  </Button>
+                  <Link to={`/users/customers/show/${row._id}`}>
+                    <Button variant="contained" color="primary">
+                      Show
+                    </Button>
+                  </Link>
                 </TableCell>
                 <TableCell align="left">
                   <Button
