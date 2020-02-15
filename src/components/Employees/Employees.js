@@ -10,12 +10,12 @@ import TextField from "@material-ui/core/TextField";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import {
-  startRemoveDepartment,
-  startAddDepartment
-} from "../../actions/departmentActions";
+  startRemoveEmployee,
+  startAddEmployee
+} from "../../actions/employeesAction";
 import React, { Component } from "react";
 
-class Departments extends Component {
+class Employees extends Component {
   constructor() {
     super();
     this.state = {
@@ -28,11 +28,11 @@ class Departments extends Component {
     const formData = {
       name: this.state.name
     };
-    this.props.dispatch(startAddDepartment(formData));
+    this.props.dispatch(startAddEmployee(formData));
   };
 
   handleRemove = (id) => {
-    this.props.dispatch(startRemoveDepartment(id));
+    this.props.dispatch(startRemoveEmployee(id));
   };
 
   handleChange = (e) => {
@@ -42,27 +42,35 @@ class Departments extends Component {
     return (
       <div align="center">
         <h1>
-          Departments-
-          {this.props.departments.length}
+          Employees-
+          {this.props.employees.length}
         </h1>
         <TableContainer component={Paper}>
           <Table style={{ width: 500 }}>
             <TableHead>
               <TableRow>
-                <TableCell>Departments</TableCell>
+                <TableCell>#</TableCell>
+                <TableCell>Name</TableCell>
+                <TableCell align="left">Email</TableCell>
+                <TableCell align="left">Mobile</TableCell>
+                <TableCell align="left">Department</TableCell>
                 <TableCell align="left">Action</TableCell>
                 <TableCell align="left">Remove</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {this.props.departments.map((row) => (
+              {this.props.employees.map((row, i) => (
                 <TableRow key={row.name}>
                   <TableCell component="th" scope="row">
-                    {row.name}
+                    {i + 1}
                   </TableCell>
+                  <TableCell align="left">{row.name}</TableCell>
+                  <TableCell align="left">{row.email}</TableCell>
+                  <TableCell align="left">{row.mobile}</TableCell>
+                  <TableCell align="left">{row.department.name}</TableCell>
                   <TableCell align="left">
                     <Link
-                      to={`/users/departments/${row._id}`}
+                      to={`/users/employees/${row._id}`}
                       style={{ textDecoration: "none" }}
                     >
                       <Button variant="contained" color="primary">
@@ -85,21 +93,6 @@ class Departments extends Component {
           </Table>
         </TableContainer>
         <br />
-        <form onSubmit={this.handleClick}>
-          <TextField
-            type="text"
-            label="Add Department"
-            value={this.state.name}
-            variant="filled"
-            name="name"
-            onChange={this.handleChange}
-            style={{ height: 30 }}
-          />
-          <br />
-          <br />
-          <br />
-          <TextField type="submit" value="ADD" color="primary"></TextField>
-        </form>
       </div>
     );
   }
@@ -107,8 +100,8 @@ class Departments extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    departments: state.departments
+    employees: state.employees
   };
 };
 
-export default connect(mapStateToProps)(Departments);
+export default connect(mapStateToProps)(Employees);

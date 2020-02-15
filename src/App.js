@@ -13,7 +13,7 @@ import Customers from "./components/Customer/Customers";
 import CustomerNew from "./components/Customer/CustomerNew";
 import CustomersEdit from "./components/Customer/CustomersEdit";
 import Departments from "./components/Department/Departments";
-import Employees from "./components/Employees";
+import Employees from "./components/Employees/Employees";
 import Tickets from "./components/Tickets";
 import CustomerShow from "./components/Customer/CustomerShow";
 import { startLogout } from "./actions/userActions";
