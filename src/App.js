@@ -12,11 +12,13 @@ import { connect } from "react-redux";
 import Customers from "./components/Customer/Customers";
 import CustomerNew from "./components/Customer/CustomerNew";
 import CustomersEdit from "./components/Customer/CustomersEdit";
-import Departments from "./components/Departments";
+import Departments from "./components/Department/Departments";
 import Employees from "./components/Employees";
 import Tickets from "./components/Tickets";
 import CustomerShow from "./components/Customer/CustomerShow";
 import { startLogout } from "./actions/userActions";
+import DepartmentsEdit from "./components/Department/DepartmentsEdit";
+import DepartmentShow from "./components/Department/DepartmentShow";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -120,11 +122,18 @@ function App(props) {
 
           <Route path="/users/customers/show/:id" component={CustomerShow} />
           <Route path="/users/customers/edit/:id" component={CustomersEdit} />
+          <Route path="/users/departments/:id" component={DepartmentShow} />
           <Route
             path="/users/departments"
             component={Departments}
             exact={true}
           />
+          <Route
+            path="/departments/edit/:id"
+            component={DepartmentsEdit}
+            exact={true}
+          />
+
           <Route path="/users/employees" component={Employees} exact={true} />
           <Route path="/users/tickets" component={Tickets} exact={true} />
         </BrowserRouter>

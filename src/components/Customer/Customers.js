@@ -7,8 +7,8 @@ import Button from "@material-ui/core/Button";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import {
-  startRemoveCustomer,
-  startGetCustomer
+  startRemoveCustomer
+  // startGetCustomer
 } from "../../actions/customersActions";
 import { Link } from "react-router-dom";
 
@@ -17,12 +17,12 @@ function Customers(props) {
     props.dispatch(startRemoveCustomer(id)) && window.location.reload(false);
   };
 
-  props.dispatch(startGetCustomer());
+  //props.dispatch(startGetCustomer());
 
   return (
-    <div>
+    <div align="center">
       <h1>Customers - {props.customers.length}</h1>
-      <Table>
+      <Table style={{ width: 1000 }}>
         <TableHead>
           <TableRow>
             <TableCell>ID</TableCell>

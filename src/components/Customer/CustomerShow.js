@@ -1,18 +1,10 @@
 import { connect } from "react-redux";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import Paper from "@material-ui/core/Paper";
+import Button from "@material-ui/core/Button";
 import React from "react";
 import { Link } from "react-router-dom";
+import TicketInfo from "../TicketInfo";
 
 function CustomerShow(props) {
-  const [value, setValue] = React.useState(0);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-    console.log(value);
-  };
-
   return (
     <div align="center">
       <div>
@@ -21,21 +13,13 @@ function CustomerShow(props) {
           to={`/users/customers/edit/${props.match.params.id}`}
           style={{ textDecoration: "none" }}
         >
-          Edit
+          <Button color="primary" variant="contained">
+            Edit
+          </Button>
         </Link>
-        <Paper square>
-          <Tabs
-            onChange={handleChange}
-            indicatorColor="primary"
-            textColor="primary"
-            value={value}
-            centered
-          >
-            <Tab label="All" />
-            <Tab label="Pending" />
-            <Tab label="Completed" />
-          </Tabs>
-        </Paper>
+        <br />
+        <br />
+        <TicketInfo />
       </div>
     </div>
   );
