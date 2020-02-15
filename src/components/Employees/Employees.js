@@ -6,7 +6,6 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import TextField from "@material-ui/core/TextField";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import {
@@ -70,7 +69,7 @@ class Employees extends Component {
                   <TableCell align="left">{row.department.name}</TableCell>
                   <TableCell align="left">
                     <Link
-                      to={`/users/employees/${row._id}`}
+                      to={`/users/employees/show/${row._id}`}
                       style={{ textDecoration: "none" }}
                     >
                       <Button variant="contained" color="primary">

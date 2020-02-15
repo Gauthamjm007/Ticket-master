@@ -8,7 +8,7 @@ export default function employeesReducer(state = initState, action) {
       return state.filter((ele) => ele._id === action.payload);
     case "EDIT_EMPLOYEE":
       return state.map((ele) => {
-        return ele._id == action.payload.id
+        return ele._id === action.payload.id
           ? Object.assign({}, ele, action.payload.data)
           : Object.assign({}, ele);
       });
