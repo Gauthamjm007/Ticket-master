@@ -1,38 +1,38 @@
 import axios from "../config/axios";
 
-export const startGetEmployees = () => {
+export const startGetTicket = () => {
   return (dispatch) => {
     axios
-      .get("/employees", {
+      .get("/tickets", {
         headers: {
           "x-auth": localStorage.getItem("authToken")
         }
       })
       .then((response) => {
-        const employees = response.data;
-        dispatch(getEmployees(employees));
+        const ticket = response.data;
+        dispatch(getTicket(ticket));
       });
   };
 };
 
-export const getEmployees = (employees) => {
-  return { type: "GET_EMPLOYEES", payload: employees };
+export const getTicket = (ticket) => {
+  return { type: "GET_TICKET", payload: ticket };
 };
 
-export const startRemoveEmployee = (id) => {
+export const startRemoveTicket = (id) => {
   return (dispatch) => {
     axios
-      .delete(`/employees/${id}`, {
+      .delete(`/tickets/${id}`, {
         headers: {
           "x-auth": localStorage.getItem("authToken")
         }
       })
       .then((response) => {
         console.log(response.data);
-        const employee = response.data;
-        if (employee.hasOwnProperty("name")) {
-          alert(employee.name + " has been deleted ");
-          dispatch(removeEmployee(id));
+        const ticket = response.data;
+        if (ticket.hasOwnProperty("message")) {
+          alert(ticket.message + " has been deleted ");
+          dispatch(removeTicket(id));
         } else {
           alert(
             "failed to delete the record please check your internet connection"
@@ -42,14 +42,14 @@ export const startRemoveEmployee = (id) => {
   };
 };
 
-export const removeEmployee = (id) => {
-  return { type: "REMOVE_EMPLOYEE", payload: id };
+export const removeTicket = (id) => {
+  return { type: "REMOVE_TICKET", payload: id };
 };
 
-export const startEmployeeEdit = (formData, id, redirect) => {
+export const startTicketEdit = (formData, id, redirect) => {
   return (dispatch) => {
     axios
-      .put(`/employees/${id}`, formData, {
+      .put(`/tickets/${id}`, formData, {
         headers: {
           "x-auth": localStorage.getItem("authToken")
         }
@@ -61,22 +61,22 @@ export const startEmployeeEdit = (formData, id, redirect) => {
   };
 };
 
-export const startAddEmployee = (formData, redirect) => {
+export const startAddTicket = (formData, redirect) => {
   return (dispatch) => {
     axios
-      .post("/employees", formData, {
+      .post("/ticket", formData, {
         headers: {
           "x-auth": localStorage.getItem("authToken")
         }
       })
       .then((response) => {
         console.log(response.data);
-        dispatch(addEmployee(formData));
+        dispatch(addTicket(formData));
         redirect();
       });
   };
 };
 
-export const addEmployee = (employees) => {
-  return { type: "ADD_EMPLOYEE", payload: employees };
+export const addTicket = (ticket) => {
+  return { type: "ADD_TICKET", payload: ticket };
 };

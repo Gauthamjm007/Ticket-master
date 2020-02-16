@@ -8,28 +8,10 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
-import {
-  startRemoveEmployee,
-  startAddEmployee
-} from "../../actions/employeesAction";
+import { startRemoveEmployee } from "../../actions/employeesAction";
 import React, { Component } from "react";
 
 class Employees extends Component {
-  constructor() {
-    super();
-    this.state = {
-      name: ""
-    };
-  }
-
-  handleClick = (e) => {
-    e.preventDefault();
-    const formData = {
-      name: this.state.name
-    };
-    this.props.dispatch(startAddEmployee(formData));
-  };
-
   handleRemove = (id) => {
     this.props.dispatch(startRemoveEmployee(id));
   };
@@ -92,6 +74,11 @@ class Employees extends Component {
           </Table>
         </TableContainer>
         <br />
+        <Link to="/users/employees/new" style={{ textDecoration: "none" }}>
+          <Button variant="contained" color="primary">
+            Add Employee
+          </Button>
+        </Link>
       </div>
     );
   }

@@ -7,6 +7,7 @@ import { startSetUser } from "./actions/userActions";
 import { startGetCustomer } from "./actions/customersActions";
 import { startGetDepartment } from "./actions/departmentActions";
 import { startGetEmployees } from "./actions/employeesAction";
+import { startGetTicket } from "./actions/ticketsAction";
 
 const store = configureStore();
 
@@ -21,6 +22,7 @@ if (localStorage.getItem("authToken")) {
   store.dispatch(startGetCustomer());
   store.dispatch(startGetDepartment());
   store.dispatch(startGetEmployees());
+  store.dispatch(startGetTicket());
 }
 
 const jsx = (

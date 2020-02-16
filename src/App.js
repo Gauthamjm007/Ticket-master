@@ -14,7 +14,6 @@ import CustomerNew from "./components/Customer/CustomerNew";
 import CustomersEdit from "./components/Customer/CustomersEdit";
 import Departments from "./components/Department/Departments";
 import Employees from "./components/Employees/Employees";
-import Tickets from "./components/Tickets";
 import CustomerShow from "./components/Customer/CustomerShow";
 import { startLogout } from "./actions/userActions";
 import DepartmentsEdit from "./components/Department/DepartmentsEdit";
@@ -22,6 +21,7 @@ import DepartmentShow from "./components/Department/DepartmentShow";
 import EmployeesNew from "./components/Employees/EmployeesNew";
 import EmployeesShow from "./components/Employees/EmployeesShow";
 import EmployeesEdit from "./components/Employees/EmployeesEdit";
+import Ticket from "./components/Ticket/Ticket";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -152,7 +152,7 @@ function App(props) {
             component={EmployeesEdit}
             exact={true}
           />
-          <Route path="/users/tickets" component={Tickets} exact={true} />
+          <Route path="/users/tickets" component={Ticket} exact={true} />
         </BrowserRouter>
       </div>
       <br />

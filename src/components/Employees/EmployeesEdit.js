@@ -40,7 +40,8 @@ class EmployeesEdit extends Component {
     const formData = {
       name: this.state.name,
       email: this.state.email,
-      mobile: this.state.mobile
+      mobile: this.state.mobile,
+      department: this.state.department
     };
 
     const redirect = () => {
