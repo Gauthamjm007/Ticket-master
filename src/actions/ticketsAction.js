@@ -64,7 +64,7 @@ export const startTicketEdit = (formData, id, redirect) => {
 export const startAddTicket = (formData, redirect) => {
   return (dispatch) => {
     axios
-      .post("/ticket", formData, {
+      .post("/tickets", formData, {
         headers: {
           "x-auth": localStorage.getItem("authToken")
         }

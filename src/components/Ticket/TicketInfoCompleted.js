@@ -28,11 +28,6 @@ class TicketInfoCompleted extends Component {
           Tickets-
           {this.props.tickets.length}
         </h1>
-        <Link to="/users/ticket/new" style={{ textDecoration: "none" }}>
-          <Button variant="contained" color="primary">
-            Add Employee
-          </Button>
-        </Link>
         <TableContainer component={Paper}>
           <Table style={{ width: 1200 }}>
             <TableHead>

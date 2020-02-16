@@ -22,6 +22,8 @@ import EmployeesNew from "./components/Employees/EmployeesNew";
 import EmployeesShow from "./components/Employees/EmployeesShow";
 import EmployeesEdit from "./components/Employees/EmployeesEdit";
 import Ticket from "./components/Ticket/Ticket";
+import TicketAdd from "./components/Ticket/TicketAdd";
+import ShowTicket from "./components/Ticket/ShowTicket";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -113,9 +115,13 @@ function App(props) {
               )}
             </Toolbar>
           </AppBar>
+
+          {/* Before login */}
           <Route path="/" component={Home} exact={true} />
           <Route path="/users/login" component={Login} exact={true} />
           <Route path="/users/register" component={Register} exact={true} />
+
+          {/* after login */}
           <Route path="/users/customers" component={Customers} exact={true} />
           <Route
             path="/users/customers/new"
@@ -123,8 +129,11 @@ function App(props) {
             exact={true}
           />
 
+          {/* customer components */}
           <Route path="/users/customers/show/:id" component={CustomerShow} />
           <Route path="/users/customers/edit/:id" component={CustomersEdit} />
+
+          {/* departments components */}
           <Route path="/users/departments/:id" component={DepartmentShow} />
           <Route
             path="/users/departments"
@@ -136,6 +145,8 @@ function App(props) {
             component={DepartmentsEdit}
             exact={true}
           />
+
+          {/* employees components */}
           <Route path="/users/employees" component={Employees} exact={true} />
           <Route
             path="/users/employees/new"
@@ -152,7 +163,15 @@ function App(props) {
             component={EmployeesEdit}
             exact={true}
           />
+
+          {/* Ticket components */}
           <Route path="/users/tickets" component={Ticket} exact={true} />
+          <Route path="/users/ticket/new" component={TicketAdd} exact={true} />
+          <Route
+            path="/users/ticket/show/:id"
+            component={ShowTicket}
+            exact={true}
+          />
         </BrowserRouter>
       </div>
       <br />

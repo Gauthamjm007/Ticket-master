@@ -82,7 +82,7 @@ class EmployeesNew extends Component {
           />
           <br />
           <FormControl style={{ margin: 1, minWidth: 210 }}>
-            <InputLabel htmlFor="grouped-select">Grouping</InputLabel>
+            <InputLabel htmlFor="grouped-select">Department</InputLabel>
             <Select
               defaultValue=""
               input={
