@@ -9,8 +9,8 @@ import Input from "@material-ui/core/Input";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import StatefulMultiSelect from "@khanacademy/react-multi-select";
-import { makeStyles } from "@material-ui/core/styles";
+//import StatefulMultiSelect from "@khanacademy/react-multi-select";
+//import { makeStyles } from "@material-ui/core/styles";
 import Chip from "@material-ui/core/Chip";
 
 const ITEM_HEIGHT = 48;
@@ -49,7 +49,7 @@ class TicketAdd extends Component {
       customer: this.state.customer,
       department: this.state.department,
       employees: this.state.selected.map((ele) => {
-        return { ["_id"]: ele };
+        return { _id: ele };
       }),
       isResolved: false,
       priority: this.state.priority,
@@ -63,6 +63,7 @@ class TicketAdd extends Component {
     };
     this.props.dispatch(startAddTicket(formData, redirect));
   };
+
   handleChange = (e) => {
     const employeeId = this.state.employees.map((ele) => {
       return this.props.employees.find((newEle) => ele === newEle.name)._id;
@@ -79,7 +80,7 @@ class TicketAdd extends Component {
   };
 
   render() {
-    const { selected } = this.state;
+    //const { selected } = this.state;
 
     console.log(this.state.selected, "this is empl");
     return (
