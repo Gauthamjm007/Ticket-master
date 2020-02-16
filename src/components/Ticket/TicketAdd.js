@@ -9,6 +9,20 @@ import Input from "@material-ui/core/Input";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+import StatefulMultiSelect from "@khanacademy/react-multi-select";
+import { makeStyles } from "@material-ui/core/styles";
+import Chip from "@material-ui/core/Chip";
+
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250
+    }
+  }
+};
 
 class TicketAdd extends Component {
   constructor(props) {
@@ -17,9 +31,10 @@ class TicketAdd extends Component {
       code: "",
       customer: "",
       department: "",
-      employees: "",
+      employees: [],
       priority: "",
-      message: ""
+      message: "",
+      selected: []
     };
   }
 
@@ -33,7 +48,9 @@ class TicketAdd extends Component {
       code: this.state.code,
       customer: this.state.customer,
       department: this.state.department,
-      employees: [{ ["_id"]: this.state.employees }],
+      employees: this.state.selected.map((ele) => {
+        return { ["_id"]: ele };
+      }),
       isResolved: false,
       priority: this.state.priority,
       message: this.state.message
@@ -47,11 +64,24 @@ class TicketAdd extends Component {
     this.props.dispatch(startAddTicket(formData, redirect));
   };
   handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+    const employeeId = this.state.employees.map((ele) => {
+      return this.props.employees.find((newEle) => ele === newEle.name)._id;
+    });
+
+    this.setState({ [e.target.name]: e.target.value, selected: employeeId });
+  };
+
+  handleChangeChip = (e) => {
+    console.log(e.target.value);
+    this.setState({
+      [e.target.name]: e.target.value
+    });
   };
 
   render() {
-    console.log(this.props.employees, "this is empl");
+    const { selected } = this.state;
+
+    console.log(this.state.selected, "this is empl");
     return (
       <div align="center">
         <br />
@@ -107,25 +137,58 @@ class TicketAdd extends Component {
             </Select>
           </FormControl>
           <br />
-          <FormControl style={{ margin: 1, minWidth: 410 }}>
-            <InputLabel htmlFor="grouped-select">Employees</InputLabel>
+          <FormControl style={{ minWidth: 410, maxWidth: 1000 }}>
+            <InputLabel id="demo-mutiple-chip-label">Chip</InputLabel>
             <Select
-              defaultValue=""
+              labelId="demo-mutiple-chip-label"
+              id="demo-mutiple-chip"
+              multiple
               name="employees"
-              input={<Input id="grouped-select" value={this.state.employees} />}
-              onClick={this.handleChangeDropDown}
+              onChange={this.handleChangeChip}
+              input={
+                <Input
+                  id="select-multiple-chip"
+                  value={
+                    this.state.employees.length !== 0
+                      ? this.state.employees
+                      : []
+                  }
+                />
+              }
+              renderValue={(selected) => (
+                <div>
+                  {selected.map((value) => (
+                    <Chip key={value} label={value} style={{ margin: 2 }} />
+                  ))}
+                </div>
+              )}
+              MenuProps={MenuProps}
             >
-              {this.props.employees.map((ele) => {
-                return ele.department._id == this.state.department ? (
-                  <MenuItem value={ele._id} key={ele._id}>
+              {this.props.employees
+                .filter((ele) => ele.department._id === this.state.department)
+                .map((ele) => (
+                  <MenuItem key={ele._id} value={ele.name}>
                     {ele.name}
                   </MenuItem>
-                ) : (
-                  "None"
-                );
-              })}
+                ))}
             </Select>
           </FormControl>
+          {/* <StatefulMultiSelect
+            overrideStrings={{
+              selectSomeItems: "Select Employees",
+              allItemsAreSelected: "All Employees are Selected",
+              selectAll: "Select All Employees",
+              search: "Search Employee"
+            }}
+            options={this.props.employees
+              .filter((ele) => ele.department._id === this.state.department)
+              .map((ele) => {
+                return { label: ele.name.toUpperCase(), value: ele._id };
+              })}
+            selected={selected}
+            onSelectedChanged={(selected) => this.setState({ selected })}
+          />
+            */}
           <br />
           <FormControl style={{ margin: 1, minWidth: 410 }}>
             <InputLabel htmlFor="grouped-select">Priority</InputLabel>
@@ -152,6 +215,7 @@ class TicketAdd extends Component {
           <br />
           <br />
           <br />
+
           <Button variant="contained" onClick={this.handleClick}>
             Submit
           </Button>
