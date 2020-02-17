@@ -5,7 +5,7 @@ export default function employeesReducer(state = initState, action) {
     case "ADD_EMPLOYEE":
       return state.concat(action.payload);
     case "REMOVE_EMPLOYEE":
-      return state.filter((ele) => ele._id === action.payload);
+      return state.filter((ele) => ele._id !== action.payload);
     case "EDIT_EMPLOYEE":
       return state.map((ele) => {
         return ele._id === action.payload.id

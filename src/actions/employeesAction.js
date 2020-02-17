@@ -31,7 +31,6 @@ export const startRemoveEmployee = (id) => {
         console.log(response.data);
         const employee = response.data;
         if (employee.hasOwnProperty("name")) {
-          alert(employee.name + " has been deleted ");
           dispatch(removeEmployee(id));
         } else {
           alert(

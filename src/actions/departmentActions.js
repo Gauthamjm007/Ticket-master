@@ -31,7 +31,6 @@ export const startRemoveDepartment = (id) => {
         console.log(response.data);
         const department = response.data;
         if (department.hasOwnProperty("name")) {
-          alert(department.name + " has been deleted ");
           dispatch(removeDepartment(id));
         } else {
           alert(

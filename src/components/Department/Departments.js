@@ -14,6 +14,7 @@ import {
   startAddDepartment
 } from "../../actions/departmentActions";
 import React, { Component } from "react";
+import Swal from "sweetalert2";
 
 class Departments extends Component {
   constructor() {
@@ -32,7 +33,21 @@ class Departments extends Component {
   };
 
   handleRemove = (id) => {
-    this.props.dispatch(startRemoveDepartment(id));
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.value) {
+        this.props.dispatch(startRemoveDepartment(id)) &&
+          window.location.reload(false);
+        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+      }
+    });
   };
 
   handleChange = (e) => {

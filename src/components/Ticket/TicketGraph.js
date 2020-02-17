@@ -77,18 +77,32 @@ class TicketGraph extends Component {
               .length,
             this.props.tickets.filter((ele) => ele.priority === "Low").length
           ],
+
           options: {
             chart: {
               width: 380,
-              type: "pie"
+              type: "donut"
             },
-            labels: ["High", "Medium", "Low"],
+            plotOptions: {
+              value: {
+                show: false,
+                fontSize: "36px",
+                fontFamily: "Helvetica, Arial, sans-serif",
+                color: undefined,
+                offsetY: 10,
+                formatter: function(val) {
+                  return val;
+                }
+              }
+            },
+
+            labels: ["HIGH", "MEDIUM", "LOW"],
             responsive: [
               {
                 breakpoint: 480,
                 options: {
                   chart: {
-                    width: 200
+                    width: 300
                   },
                   legend: {
                     position: "bottom"
@@ -113,7 +127,7 @@ class TicketGraph extends Component {
         <ReactApexChart
           options={this.state.pie.options}
           series={this.state.pie.series}
-          type="pie"
+          type="donut"
           width={380}
         />
         <h1>Tickets based on Departments</h1>

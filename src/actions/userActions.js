@@ -1,4 +1,5 @@
 import axios from "../config/axios";
+import Swal from "sweetalert2";
 
 export const startLogout = () => {
   return (dispatch) => {
@@ -26,8 +27,18 @@ export const startRegisterUser = (formData, redirect) => {
     axios.post("/users/register", formData).then((response) => {
       console.log(response.data);
       if (response.data.hasOwnProperty("errors")) {
-        alert(response.data.message);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: response.data.message
+        });
       } else {
+        Swal.fire({
+          icon: "success",
+          title: "Sucessfully Registered,Now You can Log in",
+          showConfirmButton: false,
+          timer: 2000
+        });
         redirect();
       }
     });
@@ -38,7 +49,11 @@ export const startLogin = (formData, redirect) => {
   return (dispatch) => {
     axios.post("/users/login", formData).then((response) => {
       if (response.data.hasOwnProperty("error")) {
-        alert(response.data.error);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: response.data.error
+        });
       } else {
         localStorage.setItem("authToken", response.data.token);
         axios
@@ -49,6 +64,12 @@ export const startLogin = (formData, redirect) => {
           })
           .then((response) => {
             const user = response.data;
+            Swal.fire({
+              icon: "success",
+              title: "Sucessfully Logged in",
+              showConfirmButton: false,
+              timer: 1500
+            });
             dispatch(setUser(user));
             redirect();
           });

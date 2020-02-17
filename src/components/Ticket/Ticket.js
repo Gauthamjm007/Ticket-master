@@ -67,7 +67,7 @@ function Ticket(props) {
 
       <h1 align="center">
         {(
-          (props.tickets.filter((ele) => !ele.isResolved).length /
+          (props.tickets.filter((ele) =>  ele.isResolved).length /
             props.tickets.length) *
           100
         ).toFixed(2)}
@@ -86,7 +86,7 @@ function Ticket(props) {
             variant="determinate"
             color="secondary"
             value={
-              (props.tickets.filter((ele) => !ele.isResolved).length /
+              (props.tickets.filter((ele) => ele.isResolved).length /
                 props.tickets.length) *
               100
             }

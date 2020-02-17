@@ -31,7 +31,6 @@ export const startRemoveTicket = (id) => {
         console.log(response.data);
         const ticket = response.data;
         if (ticket.hasOwnProperty("message")) {
-          alert(ticket.message + " has been deleted ");
           dispatch(removeTicket(id));
         } else {
           alert(

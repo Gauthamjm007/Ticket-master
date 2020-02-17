@@ -10,6 +10,8 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import FilledInput from "@material-ui/core/FilledInput";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 class Register extends Component {
   constructor() {
@@ -38,7 +40,6 @@ class Register extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     if (this.state.password === this.state.confirmPassword) {
-      alert("sucessfully logged in ");
       const redirect = () => {
         return this.props.history.push("/users/login");
       };
@@ -50,7 +51,10 @@ class Register extends Component {
       };
       this.props.dispatch(startRegisterUser(formData, redirect));
     } else {
-      alert("passwords do not match");
+      Swal.fire({
+        icon: "error",
+        title: "Your passwords donot match"
+      });
     }
   };
   render() {

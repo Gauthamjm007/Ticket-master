@@ -22,6 +22,7 @@ class EmployeesNew extends Component {
   }
 
   handleChangeDropDown = (e) => {
+    console.log(e.target.value);
     this.setState({ department: e.target.value });
   };
   handleClick = (e) => {

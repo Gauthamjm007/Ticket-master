@@ -5,7 +5,7 @@ export default function ticketsReducer(state = initState, action) {
     case "ADD_TICKET":
       return state.concat(action.payload);
     case "REMOVE_TICKET":
-      return state.filter((ele) => ele._id === action.payload);
+      return state.filter((ele) => ele._id !== action.payload);
     case "EDIT_TICKET":
       return state.map((ele) => {
         return ele._id === action.payload.id

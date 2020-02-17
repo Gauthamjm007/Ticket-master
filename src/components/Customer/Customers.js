@@ -6,6 +6,8 @@ import TableCell from "@material-ui/core/TableCell";
 import Button from "@material-ui/core/Button";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import Swal from "sweetalert2";
+
 import {
   startRemoveCustomer
   // startGetCustomer
@@ -14,7 +16,22 @@ import { Link } from "react-router-dom";
 
 function Customers(props) {
   const handleRemoveCustomer = (id) => {
-    props.dispatch(startRemoveCustomer(id)) && window.location.reload(false);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.value) {
+        props.dispatch(startRemoveCustomer(id)) &&
+          window.location.reload(false);
+        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+      }
+    });
+    //  ;
   };
 
   //props.dispatch(startGetCustomer());
