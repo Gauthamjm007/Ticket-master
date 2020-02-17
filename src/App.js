@@ -23,6 +23,7 @@ import EmployeesShow from "./components/Employees/EmployeesShow";
 import EmployeesEdit from "./components/Employees/EmployeesEdit";
 import Ticket from "./components/Ticket/Ticket";
 import TicketAdd from "./components/Ticket/TicketAdd";
+import TicketEdit from "./components/Ticket/TicketEdit";
 import ShowTicket from "./components/Ticket/ShowTicket";
 
 const useStyles = makeStyles((theme) => ({
@@ -167,6 +168,11 @@ function App(props) {
           {/* Ticket components */}
           <Route path="/users/tickets" component={Ticket} exact={true} />
           <Route path="/users/ticket/new" component={TicketAdd} exact={true} />
+          <Route
+            path="/users/ticket/edit/:id"
+            component={TicketEdit}
+            exact={true}
+          />
           <Route
             path="/users/ticket/show/:id"
             component={ShowTicket}

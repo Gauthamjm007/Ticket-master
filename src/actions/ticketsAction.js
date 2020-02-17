@@ -56,8 +56,16 @@ export const startTicketEdit = (formData, id, redirect) => {
       })
       .then((response) => {
         console.log(response.data);
+        dispatch(ticketEdit(id, formData));
         redirect();
       });
+  };
+};
+
+export const ticketEdit = (id, data) => {
+  return {
+    type: "EDIT_TICKET",
+    payload: { id, data }
   };
 };
 
