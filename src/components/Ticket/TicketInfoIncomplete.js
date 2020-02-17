@@ -8,15 +8,23 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
-import { startRemoveTicket } from "../../actions/ticketsAction";
+import {
+  startRemoveTicket,
+  startticketCheckbox
+} from "../../actions/ticketsAction";
 import React, { Component } from "react";
 
 class TicketInfoIncomplete extends Component {
   handleRemove = (id) => {
-    console.log(id, "idaseads");
     this.props.dispatch(startRemoveTicket(id));
   };
 
+  handleCheckbox = (e, id) => {
+    const formData = {
+      isResolved: e.target.checked
+    };
+    this.props.dispatch(startticketCheckbox(formData, id));
+  };
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -100,7 +108,11 @@ class TicketInfoIncomplete extends Component {
                         </Button>
                       </TableCell>
                       <TableCell align="left">
-                        <input type="checkbox" checked={row.isResolved}></input>
+                        <input
+                          type="checkbox"
+                          checked={row.isResolved}
+                          onChange={(e) => this.handleCheckbox(e, row._id)}
+                        ></input>
                       </TableCell>
                     </TableRow>
                   ))}

@@ -12,6 +12,13 @@ export default function ticketsReducer(state = initState, action) {
           ? Object.assign({}, ele, action.payload.data)
           : Object.assign({}, ele);
       });
+    case "EDIT_TICKET_CHECKBOX":
+      return state.map((ele) => {
+        return ele._id === action.payload
+          ? Object.assign({}, ele, { isResolved: !ele.isResolved })
+          : Object.assign({}, ele);
+      });
+
     case "GET_TICKET":
       return action.payload;
     default:

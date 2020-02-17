@@ -80,3 +80,22 @@ export const startAddTicket = (formData, redirect) => {
 export const addTicket = (ticket) => {
   return { type: "ADD_TICKET", payload: ticket };
 };
+
+export const startticketCheckbox = (formData, id) => {
+  return (dispatch) => {
+    axios
+      .put(`/tickets/${id}`, formData, {
+        headers: {
+          "x-auth": localStorage.getItem("authToken")
+        }
+      })
+      .then((response) => {
+        console.log(response.data);
+        dispatch(ticketCheckbox(id));
+      });
+  };
+};
+
+export const ticketCheckbox = (id) => {
+  return { type: "EDIT_TICKET_CHECKBOX", payload: id };
+};
