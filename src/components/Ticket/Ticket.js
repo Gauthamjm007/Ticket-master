@@ -10,6 +10,7 @@ import { lighten, makeStyles, withStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import LinearProgress from "@material-ui/core/LinearProgress";
+import { startGetTicket } from "../../actions/ticketsAction";
 
 const BorderLinearProgress = withStyles({
   root: {
@@ -34,6 +35,8 @@ const useStyles = makeStyles((theme) => ({
 
 function Ticket(props) {
   const [value, setValue] = React.useState(0);
+
+  props.dispatch(startGetTicket());
 
   const classes = useStyles();
 
@@ -67,7 +70,7 @@ function Ticket(props) {
 
       <h1 align="center">
         {(
-          (props.tickets.filter((ele) =>  ele.isResolved).length /
+          (props.tickets.filter((ele) => ele.isResolved).length /
             props.tickets.length) *
           100
         ).toFixed(2)}

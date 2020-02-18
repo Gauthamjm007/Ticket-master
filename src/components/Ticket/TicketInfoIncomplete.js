@@ -114,7 +114,7 @@ class TicketInfoIncomplete extends Component {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {this.state.tickets.map((row, i) => (
+                  {this.props.tickets.map((row, i) => (
                     <TableRow key={row._id}>
                       <TableCell component="th" scope="row">
                         {row.code}

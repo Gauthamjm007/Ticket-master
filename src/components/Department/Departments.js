@@ -11,7 +11,8 @@ import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import {
   startRemoveDepartment,
-  startAddDepartment
+  startAddDepartment,
+  startGetDepartment
 } from "../../actions/departmentActions";
 import React, { Component } from "react";
 import Swal from "sweetalert2";
@@ -22,6 +23,10 @@ class Departments extends Component {
     this.state = {
       name: ""
     };
+  }
+
+  componentWillMount() {
+    this.props.dispatch(startGetDepartment());
   }
 
   handleClick = (e) => {

@@ -8,11 +8,17 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
-import { startRemoveEmployee } from "../../actions/employeesAction";
+import {
+  startRemoveEmployee,
+  startGetEmployees
+} from "../../actions/employeesAction";
 import React, { Component } from "react";
 import Swal from "sweetalert2";
 
 class Employees extends Component {
+  componentWillMount() {
+    this.props.dispatch(startGetEmployees());
+  }
   handleRemove = (id) => {
     Swal.fire({
       title: "Are you sure?",

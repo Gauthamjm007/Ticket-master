@@ -9,12 +9,14 @@ import TableRow from "@material-ui/core/TableRow";
 import Swal from "sweetalert2";
 
 import {
-  startRemoveCustomer
-  // startGetCustomer
+  startRemoveCustomer,
+  startGetCustomer
 } from "../../actions/customersActions";
 import { Link } from "react-router-dom";
 
 function Customers(props) {
+  props.dispatch(startGetCustomer());
+
   const handleRemoveCustomer = (id) => {
     Swal.fire({
       title: "Are you sure?",
