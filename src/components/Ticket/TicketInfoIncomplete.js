@@ -49,7 +49,7 @@ class TicketInfoIncomplete extends Component {
         tickets: addtickets
       });
     }
-    if (e.target.value.length == 0) {
+    if (e.target.value.length === 0) {
       this.setState({ tickets: this.props.tickets });
     }
 
@@ -74,6 +74,8 @@ class TicketInfoIncomplete extends Component {
   };
 
   handleCheckbox = (e, id) => {
+    const tickets = this.state.tickets.filter((ele) => ele._id !== id);
+    this.setState({ tickets });
     const formData = {
       isResolved: e.target.checked
     };
@@ -99,7 +101,7 @@ class TicketInfoIncomplete extends Component {
               value={this.state.message}
             />
             <TableContainer component={Paper}>
-              <Table >
+              <Table>
                 <TableHead>
                   <TableRow>
                     <TableCell>Code No</TableCell>
@@ -114,7 +116,7 @@ class TicketInfoIncomplete extends Component {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {this.props.tickets.map((row, i) => (
+                  {this.state.tickets.map((row, i) => (
                     <TableRow key={row._id}>
                       <TableCell component="th" scope="row">
                         {row.code}

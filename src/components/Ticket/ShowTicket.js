@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-
 import TicketCard from "./TicketCard";
 import { Link } from "react-router-dom";
 
@@ -45,8 +44,7 @@ function ShowTicket(props) {
   );
 }
 
-const mapStateToProps = (state, props) => {
-  const id = props.match.params.id;
+const mapStateToProps = (state) => {
   return {
     tickets: state.tickets,
     employees: state.employees,

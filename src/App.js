@@ -46,7 +46,7 @@ function App(props) {
     Swal.fire({
       title: "Are you sure you want to Logout ?",
       text: "You will have to log in again",
-      icon: "warning",
+      icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
@@ -66,7 +66,7 @@ function App(props) {
     <>
       <div align="sticky">
         <BrowserRouter>
-          <AppBar position="static" color="inherit">
+          <AppBar position="absolute" color="inherit">
             <Toolbar>
               <Typography variant="h4" className={classes.title} align="left">
                 Ticket Master

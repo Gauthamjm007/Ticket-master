@@ -97,7 +97,7 @@ function EmployeesShow(props) {
           props.employees.length !== 0 &&
           props.customers.length !== 0 &&
           props.departments.length !== 0 &&
-          formData.filter((ele) => ele.isResolved == true).length > 1 && (
+          formData.filter((ele) => ele.isResolved === true).length > 1 && (
             <TicketCard
               tickets={formData
                 .filter((ele) => {
