@@ -41,7 +41,7 @@ function Customers(props) {
   return (
     <div align="center">
       <h1>Customers - {props.customers.length}</h1>
-      <Table style={{ width: 1000 }}>
+      <Table>
         <TableHead>
           <TableRow>
             <TableCell>ID</TableCell>

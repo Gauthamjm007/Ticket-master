@@ -25,6 +25,7 @@ import Ticket from "./components/Ticket/Ticket";
 import TicketAdd from "./components/Ticket/TicketAdd";
 import TicketEdit from "./components/Ticket/TicketEdit";
 import ShowTicket from "./components/Ticket/ShowTicket";
+import Swal from "sweetalert2";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,7 +43,24 @@ function App(props) {
   const classes = useStyles();
 
   const handleDelete = (e) => {
-    props.dispatch(startLogout());
+    Swal.fire({
+      title: "Are you sure you want to Logout ?",
+      text: "You will have to log in again",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Log out!"
+    }).then((result) => {
+      if (result.value) {
+        props.dispatch(startLogout()) && window.location.reload(false);
+        Swal.fire(
+          "Logged Out!",
+          "Your have successfully logged out",
+          "success"
+        );
+      }
+    });
   };
   return (
     <>

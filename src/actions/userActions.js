@@ -2,6 +2,8 @@ import axios from "../config/axios";
 import Swal from "sweetalert2";
 
 export const startLogout = () => {
+
+  
   return (dispatch) => {
     axios
       .delete("/users/logout", {

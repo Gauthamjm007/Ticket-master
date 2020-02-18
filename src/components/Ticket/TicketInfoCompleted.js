@@ -95,7 +95,7 @@ class TicketInfoCompleted extends Component {
           value={this.state.message}
         />
         <TableContainer component={Paper}>
-          <Table style={{ width: 1200 }}>
+          <Table>
             <TableHead>
               <TableRow>
                 <TableCell>Code No</TableCell>
