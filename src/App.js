@@ -66,7 +66,7 @@ function App(props) {
     <>
       <div align="sticky">
         <BrowserRouter>
-          <AppBar position="absolute" color="inherit">
+          <AppBar position="static" color="inherit">
             <Toolbar>
               <Typography variant="h4" className={classes.title} align="left">
                 Ticket Master
