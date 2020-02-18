@@ -6,8 +6,8 @@ function Home() {
       <br />
       <h1>Welcome to Ticket Master App</h1>
       <img
-        src="https://www.rhportal.com.br/wp-content/uploads/perguntas-sobre-lideran%C3%A7a.jpg"
-        width={600}
+        src="https://www.dicsinnovatives.com/wp-content/uploads/2018/09/software-engineer.png"
+        width={800}
         height={400}
         alt="loading"
       ></img>

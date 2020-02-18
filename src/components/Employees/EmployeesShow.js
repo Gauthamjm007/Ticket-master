@@ -87,12 +87,7 @@ function EmployeesShow(props) {
             <TicketCard
               tickets={formData
                 .filter((ele) => {
-                  return (
-                    ele.department ===
-                    props.employees.find(
-                      (ele1) => ele1._id === props.match.params.id
-                    ).name
-                  );
+                  return ele.employees.includes(props.emp.name);
                 })
                 .filter((ele) => ele.isResolved !== true)}
             />
@@ -101,16 +96,12 @@ function EmployeesShow(props) {
           props.tickets.length !== 0 &&
           props.employees.length !== 0 &&
           props.customers.length !== 0 &&
-          props.departments.length !== 0 && (
+          props.departments.length !== 0 &&
+          formData.filter((ele) => ele.isResolved == true).length > 1 && (
             <TicketCard
               tickets={formData
                 .filter((ele) => {
-                  return (
-                    ele.department ===
-                    props.departments.find(
-                      (ele1) => ele1._id === props.match.params.id
-                    ).name
-                  );
+                  return ele.employees.includes(props.emp.name);
                 })
                 .filter((ele) => ele.isResolved === true)}
             />

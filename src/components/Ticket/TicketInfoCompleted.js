@@ -16,6 +16,44 @@ import React, { Component } from "react";
 import Swal from "sweetalert2";
 
 class TicketInfoCompleted extends Component {
+  constructor() {
+    super();
+    this.state = {
+      tickets: [],
+      message: ""
+    };
+  }
+
+  componentWillMount() {
+    setTimeout(() => {
+      console.log(this.props.tickets, "comp tick");
+      this.setState({ tickets: this.props.tickets });
+    }, 900);
+  }
+
+  handleSearch = (e) => {
+    console.log(e.target.value);
+    const code = String(e.target.value);
+    console.log(code);
+    console.log(this.state.tickets, "tickse");
+
+    this.setState({ message: e.target.value });
+
+    let addtickets = this.state.tickets.filter((ele) =>
+      ele.code.includes(e.target.value)
+    );
+
+    if (addtickets) {
+      this.setState({
+        tickets: addtickets
+      });
+    }
+    if (e.target.value.length == 0) {
+      this.setState({ tickets: this.props.tickets });
+    }
+
+    //
+  };
   handleCheckbox = (e, id) => {
     const formData = {
       isResolved: e.target.checked
@@ -44,13 +82,18 @@ class TicketInfoCompleted extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
   render() {
-    console.log(this.props.tickets, "tickets");
+    console.log(this.state.tickets, "tickets");
     return (
       <div align="center">
         <h1>
           Tickets-
           {this.props.tickets.length}
         </h1>
+        <input
+          type="text"
+          onChange={this.handleSearch}
+          value={this.state.message}
+        />
         <TableContainer component={Paper}>
           <Table style={{ width: 1200 }}>
             <TableHead>
@@ -67,7 +110,7 @@ class TicketInfoCompleted extends Component {
               </TableRow>
             </TableHead>
             <TableBody>
-              {this.props.tickets.map((row, i) => (
+              {this.state.tickets.map((row, i) => (
                 <TableRow key={row._id}>
                   <TableCell component="th" scope="row">
                     {row.code}
