@@ -48,7 +48,7 @@ class Employees extends Component {
           {this.props.employees.length}
         </h1>
         <TableContainer component={Paper}>
-          <Table>
+          <Table style={{ width: 900 }}>
             <TableHead>
               <TableRow>
                 <TableCell>#</TableCell>

@@ -66,7 +66,7 @@ class Departments extends Component {
           {this.props.departments.length}
         </h1>
         <TableContainer component={Paper}>
-          <Table>
+          <Table style={{ width: 600 }}>
             <TableHead>
               <TableRow>
                 <TableCell>Departments</TableCell>

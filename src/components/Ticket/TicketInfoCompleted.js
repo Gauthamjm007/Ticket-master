@@ -8,6 +8,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
+import Input from "@material-ui/core/Input";
 import {
   startRemoveTicket,
   startticketCheckbox
@@ -63,6 +64,8 @@ class TicketInfoCompleted extends Component {
     this.props.dispatch(startticketCheckbox(formData, id));
   };
   handleRemove = (id) => {
+    const tickets = this.state.tickets.filter((ele) => ele._id !== id);
+    this.setState({ tickets });
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -91,11 +94,14 @@ class TicketInfoCompleted extends Component {
           Tickets-
           {this.props.tickets.length}
         </h1>
-        <input
-          type="text"
+        <Input
+          placeholder="Search"
+          variant="outlined"
+          type="search"
           onChange={this.handleSearch}
           value={this.state.message}
         />
+        <br />
         <TableContainer component={Paper}>
           <Table>
             <TableHead>
