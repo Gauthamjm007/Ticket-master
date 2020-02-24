@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/Ticket-master/static/js/main.fcf0b050.chunk.js",
-    "main.js.map": "/Ticket-master/static/js/main.fcf0b050.chunk.js.map",
+    "main.js": "/Ticket-master/static/js/main.327bc22f.chunk.js",
+    "main.js.map": "/Ticket-master/static/js/main.327bc22f.chunk.js.map",
     "runtime-main.js": "/Ticket-master/static/js/runtime-main.41415f80.js",
     "runtime-main.js.map": "/Ticket-master/static/js/runtime-main.41415f80.js.map",
-    "static/js/2.905d69da.chunk.js": "/Ticket-master/static/js/2.905d69da.chunk.js",
-    "static/js/2.905d69da.chunk.js.map": "/Ticket-master/static/js/2.905d69da.chunk.js.map",
+    "static/js/2.0c449f09.chunk.js": "/Ticket-master/static/js/2.0c449f09.chunk.js",
+    "static/js/2.0c449f09.chunk.js.map": "/Ticket-master/static/js/2.0c449f09.chunk.js.map",
     "index.html": "/Ticket-master/index.html",
-    "precache-manifest.33b2c99c06b6484a9e16bf6c4689b00b.js": "/Ticket-master/precache-manifest.33b2c99c06b6484a9e16bf6c4689b00b.js",
+    "precache-manifest.cf8d354a6b9d02adaa56922625f194e4.js": "/Ticket-master/precache-manifest.cf8d354a6b9d02adaa56922625f194e4.js",
     "service-worker.js": "/Ticket-master/service-worker.js",
-    "static/js/2.905d69da.chunk.js.LICENSE.txt": "/Ticket-master/static/js/2.905d69da.chunk.js.LICENSE.txt"
+    "static/js/2.0c449f09.chunk.js.LICENSE.txt": "/Ticket-master/static/js/2.0c449f09.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.41415f80.js",
-    "static/js/2.905d69da.chunk.js",
-    "static/js/main.fcf0b050.chunk.js"
+    "static/js/2.0c449f09.chunk.js",
+    "static/js/main.327bc22f.chunk.js"
   ]
 }
