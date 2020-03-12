@@ -29,7 +29,7 @@ class TicketInfoCompleted extends Component {
     setTimeout(() => {
       console.log(this.props.tickets, "comp tick");
       this.setState({ tickets: this.props.tickets });
-    }, 900);
+    }, 700);
   }
 
   handleSearch = (e) => {
